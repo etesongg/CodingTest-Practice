@@ -15,7 +15,7 @@ players	                                callings	                    result
 
 def solution(players, callings):
     dict = {players : index for index, players in enumerate(players)}
-
+    
     for player in callings:
         index = dict[player]
         players[index - 1], players[index] = players[index], players[index - 1]
@@ -26,4 +26,5 @@ def solution(players, callings):
 
 players = ["mumu", "soe", "poe", "kai", "mine"]
 callings = ["kai", "kai", "mine", "mine"]
+
 print(solution(players, callings))
