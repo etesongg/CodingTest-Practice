@@ -12,16 +12,10 @@ for i in str:
     else:
         sentence +=i.upper()
 
-print(sentence)
+# 다른 사람 풀이
+str = input().swapcase()
 
-
-# str = input().swapcase()
-# print(str)
-
-
-
-
-
+# 관련 함수
 str = str.upper() # upper() : 문자열을 대문자로 변환하기
 str = str.lower() # lower() : 문자열을 소문자로 변환하기
 str = str.capitalize() # capitalize() : 문자열을 첫 글자는 대문자로 만들고 나머지는 소문자로 변환하기

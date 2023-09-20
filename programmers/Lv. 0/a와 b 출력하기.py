@@ -17,6 +17,6 @@ print(f'a = {a} \nb = {b}')
 
 
 '''
-map 함수
+map 함수 설명
 https://dojang.io/mod/page/view.php?id=2286
 '''
