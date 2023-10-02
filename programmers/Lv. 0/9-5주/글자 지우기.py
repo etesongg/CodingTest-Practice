@@ -23,4 +23,8 @@ def solution(my_string, indices):
 - del list[index]: 특정 인덱스의 요소를 제거합니다. pop()과 달리 반환값이 없습니다.
 - sort(): 리스트의 요소를 오름차순으로 정렬합니다. 기본적으로 숫자 및 문자열의 경우 오름차순으로 정렬됩니다.
 - sorted(list): 리스트의 요소를 정렬한 새로운 리스트를 반환합니다. 원본 리스트는 변경되지 않습니다.
+
+- extend(iterable): 리스트에 다른 iterable의 모든 요소를 추가합니다. iterable은 리스트, 튜플, 세트 등 순회 가능한(iterable) 객체가 될 수 있습니다. extend() 메서드는 리스트의 끝에 다른 iterable의 모든 요소를 추가하여 리스트를 확장합니다.
+append() : a: [1, 2, 3, [4, 5]]
+extend() : a: [1, 2, 3, 4, 5]
 '''
