@@ -12,13 +12,9 @@ elif m < 45 and h == 0:
 # 2525
 # 오븐 시계
 h, m = map(int, input().split())
-c = int(input())
+taken_m = int(input())
 
-h += c//60
-m = c%60
-
-if h >= 24:
-    h = h%24
-    print(f'{h} {m}')
-else:
-    print(f'{h} {m}') 
+taken_m += m
+res_h = (h + (taken_m//60))%24
+res_m = taken_m%60
+print(res_h,res_m)
