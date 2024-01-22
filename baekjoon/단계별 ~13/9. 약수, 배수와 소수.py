@@ -47,3 +47,38 @@ for num in num_list:
             result += 1
     
 print(result)
+
+# 2581 소수
+# 자연수 M과 N이 주어질 때 M이상 N이하의 자연수 중 소수인 것을 모두 골라 이들 소수의 합과 최솟값을 찾는 프로그램을 작성
+M = int(input())
+N = int(input())
+
+divisor_list = [] 
+for num in range(M, N+1):
+    error = 0
+    if num > 1:
+        for i in range(2, num):
+            if num % i == 0:
+                error += 1
+                break
+        if error == 0:
+            divisor_list.append(num)
+
+if len(divisor_list) > 0:
+    print(sum(divisor_list))
+    print(min(divisor_list))
+else:
+    print(-1)
+
+# 11653 소인수분해
+# 정수 N이 주어졌을 때, 소인수분해
+N = int(input())
+
+if N == 1:
+    print('')
+
+for i in range(2, N+1):
+    if N%i == 0:
+        while N%i == 0:
+            print(i)
+            N = N/i
