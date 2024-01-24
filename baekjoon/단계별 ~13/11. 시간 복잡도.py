@@ -134,7 +134,7 @@ print((n*(n-1)*(n-2))//6)
 print(3)
 
 # 24313 점근적 표기 1
-# 알고리즘의 소요 시간을 나타내는 O-표기법(빅-오)을 다음과 같이 정의하자. O(g(n)) = {f(n) | 모든 n ≥ n0에 대하여 f(n) ≤ c × g(n)인 양의 상수 c와 n0가 존재한다} 이 정의는 실제 O-표기법(https://en.wikipedia.org/wiki/Big_O_notation)과 다를 수 있다. 함수 f(n) = a1n + a0, 양의 정수 c, n0가 주어질 경우 O(n) 정의를 만족하는지 알아보자.
+# 알고리즘의 소요 시간을 나타내는 O-표기법(빅-오)을 다음과 같이 정의하자. O(g(n)) = {f(n) | 모든 n ≥ n0에 대하여 f(n) ≤ c × g(n)인 양의 상수 c와 n0가 존재한다} 이 정의는 실제 O-표기법(https://en.wikipedia.org/wiki/Big_O_notation)과 다를 수 있다. 함수 f(n) = a1n + a0, 양의 정수 c, n0가 주어질 경우 O(n) 정의를 만족하는지 알아보자. 첫째 줄에 함수 f(n)을 나타내는 정수 a1, a0가 주어진다. (0 ≤ |ai| ≤ 100), 다음 줄에 양의 정수 c가 주어진다. (1 ≤ c ≤ 100), 다음 줄에 양의 정수 n0가 주어진다. (1 ≤ n0 ≤ 100)
 a1, a0 = map(int, input().split())
 
 c = int(input())
@@ -144,7 +144,8 @@ n0 = int(input())
 # 판별식 f(n) ≤ c × g(n)
 # a1*n + a0 <= c*n
 # (a1-c)*n0 + a0 <= 0
-if (a1*n0 + a0) <= (c*n0) and a1 <= c:
+if (a1*n0 + a0) <= (c*n0) and a1 <= c: # a0 와 a1은 음수도 될 수 있기 때문에 a1 <= c 조건을 통해 보장 해주기
     print(1)
 else:
     print(0)
+# https://kevinitcoding.tistory.com/entry/%EB%B0%B1%EC%A4%80Python-24313%EB%B2%88-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EC%88%98%EC%97%85-%EC%A0%90%EA%B7%BC%EC%A0%81-%ED%91%9C%EA%B8%B0-1-%EB%AC%B8%EC%A0%9C
