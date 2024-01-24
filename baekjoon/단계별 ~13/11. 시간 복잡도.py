@@ -12,11 +12,11 @@ Big-O 표기법의 종류
 O(1) : 일정한 복잡도이며 입력값이 증가하더라도 시간이 늘어나지 않는다.(입력값의 크기와 관계없이 즉시 출력값을 얻어낼 수 있다)
 O(n) : 선형 복잡도이며 입력값이 증가함에 따라 시간 또한 같은 비율로 증가한다. (입력값이 1증가할때마다 코드의 실행 시간이 2초씩 증가한다면 O(2n)이라고 표현할 수 있다. 하지만 입력값이 커지면 커질수록 계수의 의미가 퇴색되기 때문에 이 알고리즘 또한 O(n)라고 표기한다.)
 O(log n) : 로그 복잡도라고 부르면 빅오표기법중 O(1) 다음으로 빠른 시간 복잡도를 가진다.
-O(n2) : 2차 복잡도이며 입력값이 증가함에 따라 시간이 n의 제곱수의 비율로 증가하는 것을 의미한다.
-O(2n) : 기하급수적 복잡도라고 부르며 빅오 표기법 중 가장 느린 시간 복잡도를 가진다. 
+O(n^2) : 2차 복잡도이며 입력값이 증가함에 따라 시간이 n의 제곱수의 비율로 증가하는 것을 의미한다.
+O(2^n) : 기하급수적 복잡도라고 부르며 빅오 표기법 중 가장 느린 시간 복잡도를 가진다. 
 '''
 
-# 24262 알고리즘 수업 - 알고리즘의 수행 시간 1
+# 24262 알고리즘 수업 - 알고리즘의 수행 시간 1(O(1))
 '''
 문제 설명
 입력의 크기 n이 주어지면 MenOfPassion 알고리즘 수행 시간을 예제 출력과 같은 방식으로 출력해보자.
@@ -38,9 +38,113 @@ MenOfPassion 함수는 반복문도 없고 단순히 입력값을 받아서 배�
 print(1)
 print(0)
 
+# 24263 (O(n))
+'''
+문제 설명
+MenOfPassion(A[], n) {
+    sum <- 0;
+    for i <- 1 to n
+        sum <- sum + A[i]; # 코드1
+    return sum;
+}
+첫째 줄에 코드1 의 수행 횟수를 출력한다.
 
+둘째 줄에 코드1의 수행 횟수를 다항식으로 나타내었을 때, 최고차항의 차수를 출력한다. 단, 다항식으로 나타낼 수 없거나 최고차항의 차수가 3보다 크면 4를 출력한다.
 
+답 설명
+위에 코드를 파이썬 코드로 변환하면
+def MenOfPassion(A, n):
+	answer = 0
+    for i in range(n):
+    	answer = answer + A[i]
+    return answer
+'''
+n = int(input())
 
+print(n)
+print(1)
 
-# 
-# 
+# 24265 O(n2)
+'''
+MenOfPassion(A[], n) {
+    sum <- 0;
+    for i <- 1 to n - 1
+        for j <- i + 1 to n
+            sum <- sum + A[i] × A[j]; # 코드1
+    return sum;
+}
+이중 for 문이 사용되었기 때문에 시간 복잡도는 O(n^2)
+등차수열 공식 n(n-1)/2
+'''
+n = int(input())
+    
+print(n*(n-1)//2)
+print(2)
+# -----------------------------
+# 다른 방법
+n = int(input())
+
+res = 0
+for i in range(1, n):
+    res += i
+print(res)
+print(2)
+
+# 24266 O(n^3)
+'''
+MenOfPassion(A[], n) {
+    sum <- 0;
+    for i <- 1 to n
+        for j <- 1 to n
+            for k <- 1 to n
+                sum <- sum + A[i] × A[j] × A[k]; # 코드1
+    return sum;
+}
+3중 for문 O(n^3)
+'''
+
+# 24267 O(n^3)
+'''
+MenOfPassion(A[], n) {
+    sum <- 0;
+    for i <- 1 to n - 2
+        for j <- i + 1 to n - 1
+            for k <- j + 1 to n
+                sum <- sum + A[i] × A[j] × A[k]; # 코드1
+    return sum;
+}
+
+문제풀이
+nC3 
+https://dev-mandos.tistory.com/124
+
+(n=7이면 5!+4!+3!+2!+1!)
+n = int(input())
+cnt = n-2
+sum = 0
+for i in range(1,n-1):
+sum += cnt*i
+cnt -= 1
+print(sum)
+print(3)
+'''
+n = int(input())
+
+print((n*(n-1)*(n-2))//6)
+print(3)
+
+# 24313 점근적 표기 1
+# 알고리즘의 소요 시간을 나타내는 O-표기법(빅-오)을 다음과 같이 정의하자. O(g(n)) = {f(n) | 모든 n ≥ n0에 대하여 f(n) ≤ c × g(n)인 양의 상수 c와 n0가 존재한다} 이 정의는 실제 O-표기법(https://en.wikipedia.org/wiki/Big_O_notation)과 다를 수 있다. 함수 f(n) = a1n + a0, 양의 정수 c, n0가 주어질 경우 O(n) 정의를 만족하는지 알아보자.
+a1, a0 = map(int, input().split())
+
+c = int(input())
+n0 = int(input())
+
+# f(n) = a1*n + a0, g(n) = n
+# 판별식 f(n) ≤ c × g(n)
+# a1*n + a0 <= c*n
+# (a1-c)*n0 + a0 <= 0
+if (a1*n0 + a0) <= (c*n0) and a1 <= c:
+    print(1)
+else:
+    print(0)
