@@ -56,11 +56,64 @@ N = int(input())
 xy_list = []
 
 for _ in range(N):
-    [x, y] = map(int, input().split())
+    x, y = map(int, input().split())
     xy_list.append([x, y])
 
 xy_list.sort()
 for xy in xy_list:
     print(xy[0], xy[1])
 
+# 11651 좌표 정렬하기 2
+# 2차원 평면 위의 점 N개가 주어진다. 좌표를 y좌표가 증가하는 순으로, y좌표가 같으면 x좌표가 증가하는 순서로 정렬한 다음 출력하는 프로그램을 작성하시오.
+N = int(input())
+xy_list = []
 
+for _ in range(N):
+    x, y = map(int, input().split())
+    xy_list.append([y, x])
+
+xy_list.sort()
+for xy in xy_list:
+    print(xy[1], xy[0])
+
+# 1181 단어 정렬
+# 알파벳 소문자로 이루어진 N개의 단어가 들어오면 아래와 같은 조건에 따라 정렬하는 프로그램을 작성하시오. 길이가 짧은 것부터, 길이가 같으면 사전 순으로 단, 중복된 단어는 하나만 남기고 제거해야 한다.
+N = int(input()) # input() 대신 sys.stdin.readline()
+str_li = [input() for _ in range(N)] # for문 안에 sys.stdin.readline()을 사용하면 출력형식이 잘못되었다고 나옴 후자는 개행문자 포함해서 저장하기 때문 "abc\n" 그러므로 sys.stdin.readline().strip()처리 해줘야 함
+
+set_li = set(str_li)    #
+str_li = list(set_li)   # str_li = sorted(list(set(str_li))) 로 한 줄로 적기
+str_li.sort()           # 
+str_li.sort(key = len)
+
+for i in str_li:
+    print(i)
+
+# 10814 나이순 정렬
+# 가입한 사람들의 나이와 이름이 가입한 순서대로 주어진다. 이때, 회원들을 나이가 증가하는 순으로, 나이가 같으면 먼저 가입한 사람이 앞에 오는 순서로 정렬
+import sys
+input = sys.stdin.readline
+
+N = int(input())
+mem_li = []
+for _ in range(N):
+    age, name = map(str, input().split())
+    age = int(age)
+    mem_li.append([age, name])
+
+mem_li.sort(key = lambda x : x[0]) # 첫 번째 인자를 기준으로 오름차순(내림차순은 - 붙이기)
+for i in mem_li:
+    print(i[0], i[1])
+
+# 18870 좌표 압축
+# 수직선 위에 N개의 좌표 X1, X2, ..., XN이 있다. 이 좌표에 좌표 압축을 적용하려고 한다. Xi를 좌표 압축한 결과 X'i의 값은 Xi > Xj를 만족하는 서로 다른 좌표 Xj의 개수와 같아야 한다. X1, X2, ..., XN에 좌표 압축을 적용한 결과 X'1, X'2, ..., X'N를 출력해보자.
+import sys
+input = sys.stdin.readline
+
+N = int(input())
+li = list(map(int, input().split())) # li = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3]
+
+li2 = sorted(list(set(li))) # [1, 2, 3, 4, 5, 6, 9]
+dic = {li2[i] : i for i in range(len(li2))} # {1: 0, 2: 1, 3: 2, 4: 3, 5: 4, 6: 5, 9: 6}
+for i in li:
+    print(dic[i], end=' ') # dic[3] = 2
