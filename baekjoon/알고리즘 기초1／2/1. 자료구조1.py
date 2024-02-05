@@ -100,14 +100,37 @@ if flag == 0:
     for i in answer:
         print(i)
 
-
-
-
-
-
-
-
-
-
+# 1406
 # 
+import sys
+input = sys.stdin.readline
+
+string_li1 = list(input().strip())
+string_li2 = []
+M = int(input())
+
+for _ in range(M):
+    command = list(input().split())
+    if command[0] == 'L':
+        if string_li1:
+            string_li2.append(string_li1.pop())
+    elif command[0] == 'D':
+        if string_li2:
+            string_li1.append(string_li2.pop())
+    elif command[0] == 'B':
+        if string_li1:
+            string_li1.pop()
+    else:
+        string_li1.append(command[1])
+
+string_li1.extend(reversed(string_li2)) # string_li2.revers()로 한다면 반환값이 None이기때문에 TypeError
+print(''.join(string_li1))
+
+
+
+
+
+
+
+# 1406
 # 
