@@ -101,7 +101,6 @@ if flag == 0:
         print(i)
 
 # 1406
-# 
 import sys
 input = sys.stdin.readline
 
@@ -126,11 +125,60 @@ for _ in range(M):
 string_li1.extend(reversed(string_li2)) # string_li2.revers()로 한다면 반환값이 None이기때문에 TypeError
 print(''.join(string_li1))
 
+# 10845
+import sys
+input = sys.stdin.readline
 
+N = int(input())
+que = []
 
+for _ in range(N):
+    cmd = input().split()
+    
+    if cmd[0] == 'push':
+        que.insert(0, cmd[1])
+    elif cmd[0] == 'pop':
+        if len(que) != 0:
+            print(que.pop())
+        else:
+            print(-1)
+    elif cmd[0] == 'size':
+        print(len(que))
+    elif cmd[0] == 'empty':
+        if len(que) == 0:
+            print(1)
+        else:
+            print(0)
+    elif cmd[0] == 'front':
+        if len(que) == 0:
+            print(-1)
+        else:
+            print(que[len(que) - 1])
+    elif cmd[0] == 'back':
+        if len(que) == 0: 
+            print(-1)
+        else:
+            print(que[0])
 
+# 1158
+import sys
+input = sys.stdin.readline
 
+N, K = map(int, input().split())
+arr = [i for i in range(1, N + 1)]
 
+answer = []
+num = 0 # 제거될 사람의 인덱스 번호
 
-# 1406
-# 
+for target in range(N):
+    num += K - 1
+    if num >= len(arr): # num이 리스트의 길이보다 크거나 같으면 그 값을 리스트의 길이로 나눈 나머지 값
+        num = num%len(arr) # num %= len(arr)
+    answer.append(str(arr[num]))
+    arr.pop(num)
+    
+print('<',', '.join(answer),'>', sep='') # <3, 6, 2, 7, 5, 1, 4>
+# 앞뒤로 '<' '>' 
+# ,으로 연결(+ 사용하면 띄어쓰기 없음) print('<'+', '.join(answer)+'>')
+# sep=''을 통해 출력되는 항목들 사이에 공백이 생기지 않게 함 
+
