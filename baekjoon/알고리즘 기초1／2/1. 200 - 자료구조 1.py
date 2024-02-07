@@ -182,3 +182,46 @@ print('<',', '.join(answer),'>', sep='') # <3, 6, 2, 7, 5, 1, 4>
 # ,으로 연결(+ 사용하면 띄어쓰기 없음) print('<'+', '.join(answer)+'>')
 # sep=''을 통해 출력되는 항목들 사이에 공백이 생기지 않게 함 
 
+# 10866(10845)
+import sys
+input = sys.stdin.readline
+
+N = int(input())
+deque = []
+
+for _ in range(N):
+    cmd = input().split()
+    
+    if cmd[0] == "push_front":
+        deque.insert(0, cmd[1])
+    elif cmd[0] == "push_back":
+        deque.append(cmd[1])
+    elif cmd[0] == "pop_front":
+        if (deque):
+            print(deque[0])
+            deque.pop(0)
+        else:
+            print(-1)
+    elif cmd[0] == "pop_back":
+        if (deque):
+            print(deque[-1])
+            deque.pop()
+        else:
+            print(-1)
+    elif cmd[0] == "size":
+        print(len(deque))
+    elif cmd[0] == "empty":
+        if (deque):
+            print(0)
+        else:
+            print(1)
+    elif cmd[0] == "front":
+        if (deque):
+            print(deque[0])
+        else:
+            print(-1)
+    elif cmd[0] == "back":
+        if (deque):
+            print(deque[-1])
+        else:
+            print(-1)
