@@ -71,3 +71,23 @@ for i in range(1, N):
     stack.append(i)
 
 print(*NGE)
+
+# 17299 오등큰수
+from collections import Counter # 각각의 데이터 개수를 셀 수 있음 Counter({1: 3, 2: 2, 3: 1, 4: 1, 5: 1})
+import sys
+
+input = sys.stdin.readline
+
+N = int(input())
+A = list(map(int, input().split()))
+count = Counter(A)
+stack = [0]
+res = [-1] * N
+
+for i in range(N):
+    while stack and count[A[stack[-1]]] < count[A[i]]:
+        res[stack.pop()] = A[i]
+    stack.append(i)
+
+res_str = map(str, res) # join()은 문자열만을 합치기 때문에 str 형태로 변환 해야 함
+print(' '.join(res_str))     
